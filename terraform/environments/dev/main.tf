@@ -7,3 +7,11 @@ module "vpc" {
   environment        = var.environment
   owner              = var.owner
 }
+
+module "iam" {
+  source = "../../modules/iam"
+
+  name        = var.name
+  environment = var.environment
+  owner       = var.owner
+}
