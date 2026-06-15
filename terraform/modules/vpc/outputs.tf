@@ -1,0 +1,9 @@
+output "vpc_id" {
+  description = "ID of the SkyGuard VPC"
+  value       = aws_vpc.main.id
+}
+
+output "public_subnet"{
+  description = "ID of the public subnet"
+  value       = aws_subnet.public.id
+}
