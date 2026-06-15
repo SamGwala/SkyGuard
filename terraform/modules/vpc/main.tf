@@ -1,3 +1,4 @@
+#create vpc 
 resource "aws_vpc" "main" {
   cidr_block = var.vpc_cidr
 
@@ -8,6 +9,7 @@ resource "aws_vpc" "main" {
   }
 }
 
+#create public subnet
 resource "aws_subnet" "public" {
   vpc_id                  = aws_vpc.main.id
   cidr_block              = var.public_subnet_cidr
@@ -21,6 +23,7 @@ resource "aws_subnet" "public" {
   }
 }
 
+#create internet gateway
 resource "aws_internet_gateway" "gw"{  #attach internet gateway to the vpc 
     vpc_id = aws_vpc.main.id
 
@@ -31,6 +34,7 @@ resource "aws_internet_gateway" "gw"{  #attach internet gateway to the vpc
   }
 }
 
+#create aws route table
 resource "aws_route_table" "public" { 
   vpc_id = aws_vpc.main.id
 
@@ -45,6 +49,7 @@ resource "aws_route_table" "public" {
     }
   }
 
+#create aws route table association
   resource "aws_route_table_association" "main"{
     subnet_id        = aws_subnet.public.id
     route_table_id   = aws_route_table.public.id

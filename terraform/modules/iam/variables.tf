@@ -1,0 +1,14 @@
+variable "name"{
+  description = "Project name"
+  type        = string
+}
+
+variable "environment"{
+  description = "Deployment environment"
+  type        = string
+}
+
+variable "owner"{
+  description = "Infrastructure owner"
+  type        = string
+}
